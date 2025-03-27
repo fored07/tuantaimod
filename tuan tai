@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập ID GAME & Mã Giao Dịch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .button-group {
+            margin-bottom: 20px;
+        }
+        .button-group button {
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .button-group button:hover {
+            background: #0056b3;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background: white;
+            width: 80%;
+            max-width: 500px;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .close {
+            color: red;
+            font-size: 24px;
+            cursor: pointer;
+            float: right;
+        }
+        .video-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Nhập Thông Tin Thiết Bị</h2>
+
+    <div class="button-group">
+        <button onclick="openModal()">📽️ Cấu Hình Và SeverMod Trong </button>
+        <button onclick="openTransactionPage()">🔍 Xem Mã Giao Dịch</button>
+    </div>
+
+    <form id="udidForm">
+        <label for="udid">📌 Nhập ID:</label>
+        <input type="text" id="udid" name="udid" required placeholder="Nhập ID tại đây">
+
+
+        <label for="transaction_id">💳 Mã giao dịch:</label>
+        <input type="text" id="transaction_id" name="transaction_id" required placeholder="Nhập mã giao dịch">
+
+        <button type="submit">Gửi Thông Tin</button>
+    </form>
+
+    <div id="udidModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>🔗 Cấu Hình Mod Và SeverMod</h3>
+            <a href="https://anotepad.com/notes/m3xq3q9s" target="_blank">Câú Hình Mod Và Severmod </a>
+            <div class="video-container">
+                <h3>📽️ Video hướng dẫn</h3>
+                <iframe src="https://streamable.com/e/fnhpu1" width="100%" height="250" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById("udidModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("udidModal").style.display = "none";
+        }
+
+        function openTransactionPage() {
+            window.open("http://iosmod.site/client/orders", "_blank");
+        }
+
+        document.getElementById("udidForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var udid = document.getElementById("udid").value;
+            var device = document.getElementById("device").value;
+
+𝓘 𝓐𝓜 𝓜𝓘𝓝𝓗, [27/03/2025 10:54 CH]
+var transaction_id = document.getElementById("transaction_id").value;
+
+            var botToken = "7111835207:AAHgAuvjpMFiYdg7SqoVR8EcTmBTeBviLhA"; // Token bot Telegram
+            var chatId = "-1002690436244"; // ID nhóm Telegram
+
+            var message = 📢 **Thông tin giao dịch mới:**\n\n
+                        + 📌 **ID GAME:** ${id game}\n
+                        + 📱 **Thiết bị:** ${device}\n
+                        + 🔗 **Xem giao dịch tại:** [iosmod.site](http://iosmod.site/client/orders);
+
+            var telegramURL = https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}&parse_mode=Markdown;
+
+            fetch(telegramURL)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        alert("✅ Gửi thành công!");
+                        window.location.href = "https://t.me/leanhtuantai"; // Chuyển hướng sau khi gửi thành công
+                    } else {
+                        alert("❌ Lỗi gửi tin nhắn!");
+                    }
+                })
+                .catch(error => {
+                    alert("❌ Lỗi kết nối đến Telegram!");
+                });
+        });
+    </script>
+
+</body>
+</html>
